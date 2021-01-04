@@ -1,26 +1,18 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 import Searchbar from './components/Searchbar/Searchbar';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 
 import './App.css';
 
-class App extends Component {
-  state = {
-    searchQuery: '',
-  };
+function App() {
+  const [searchQuery, setsSearchQuery] = useState('');
 
-  handleFormSubmit = searchQuery => {
-    this.setState({ searchQuery });
-  };
-
-  render() {
-    return (
-      <div>
-        <Searchbar onSubmit={this.handleFormSubmit} />
-        <ImageGallery searchQuery={this.state.searchQuery} />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Searchbar onSubmit={setsSearchQuery} />
+      <ImageGallery searchQuery={searchQuery} />
+    </div>
+  );
 }
 
 export default App;

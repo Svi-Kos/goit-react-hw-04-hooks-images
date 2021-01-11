@@ -27,17 +27,18 @@ function ImageGallery({ searchQuery }) {
     imageAPI
       .fetchImages(searchQuery, page)
       .then(newImages => {
-        setImages(images => [...images, ...newImages.hits]);
+        setImages(images => [...images, ...newImages]);
         setStatus('resolved');
 
         if (page > 1) {
+          const elemToScroll = document.documentElement.scrollHeight - 1232;
           window.scrollTo({
-            top: document.documentElement.scrollHeight,
+            top: elemToScroll,
             behavior: 'smooth',
           });
         }
 
-        if (newImages.hits.length === 0) {
+        if (newImages.length === 0) {
           alert(errorMessage);
         }
       })
@@ -45,15 +46,8 @@ function ImageGallery({ searchQuery }) {
         setError(error);
         setStatus('rejected');
       });
-    switch (page) {
-      case 1:
-        setImages([]);
 
-        break;
-
-      default:
-        return;
-    }
+    page === 1 && setImages([]);
   }, [searchQuery, page]);
 
   const onLoadMore = () => {

@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import imageAPI from '../../services/apiSevice';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import Loader from 'react-loader-spinner';
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 import Button from '../Button/Button';
-import Loader from 'react-loader-spinner';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import imageAPI from '../../services/apiSevice';
 import s from '../ImageGallery/ImageGallery.module.css';
-import PropTypes from 'prop-types';
 
 function ImageGallery({ searchQuery }) {
   const [images, setImages] = useState([]);

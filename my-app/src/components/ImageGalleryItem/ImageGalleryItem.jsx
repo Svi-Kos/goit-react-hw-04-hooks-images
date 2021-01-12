@@ -1,7 +1,7 @@
-import s from '../ImageGalleryItem/ImageGalleryItem.module.css';
 import PropTypes from 'prop-types';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
+import s from '../ImageGalleryItem/ImageGalleryItem.module.css';
 
 function ImageGalleryItem({ webformatURL, largeImageURL, tags }) {
   function showLargeImage() {
